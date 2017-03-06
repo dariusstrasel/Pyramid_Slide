@@ -7,25 +7,34 @@
 </head>
     <body>
     <div class="wrapper">
-        <header class="flex-container space-between">
-            <h1><a href="/" class="main-title">Pyramid Slide</a></h1>
+        <header class="flex-container">
+            <h1><a href=".">Pyramid Slide</a></h1>
         </header>
         <main>
             <section class="flex-container">
                 <div class="container">
-                    <p>When you say</p>
-                    <p><strong>Draw a pyramid</strong></p>
-                    <p>I say:</p>
-
-                    <br>
-
-                    <label>How high?</label>
-                    <input type="text" id="height"/>
-                    <br><br>
-                    <button id="drawButton">Draw a pyramid</button>
-
-                    <br><br>
-                    <div id="pyramid"></div>
+                    <div class="row title flex-container">
+                        <div class="block child">
+                            <span>Brick Symbol:</span>
+                            <select id="symbol_selector"name="symbols">
+                                <option value="#">#</option>
+                                <option value="@">@</option>
+                                <option value="X">X</option>
+                                <option value="$">$</option>
+                            </select>
+                        </div>
+                        <div class="block child">
+                            <span>How high?</span>
+                            <!--<input type="text" id="height"/>-->
+                            <input type="range" id="height" name="size" min="1" max="10">
+                            <label id="label_height" for="height">0</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="block child">
+                            <div id="pyramid"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -36,5 +45,8 @@
         </footer>
     </div>
     <script src="../js/main.js"></script>
+    <script>
+        updateHeightLabel();
+    </script>
     </body>
 </html>
