@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="main.css"/>
+  <title>Pyramid Slide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+    <body>
+    <div class="wrapper">
+        <header class="flex-container">
+            <h1><a href=".">Pyramid Slide</a></h1>
+        </header>
+        <main>
+            <section class="flex-container">
+                <div class="container">
+                    <div class="row title flex-container">
+                        <div class="block child">
+                            <span>Brick Symbol:</span>
+                            <select id="symbol_selector"name="symbols">
+                                <option value="#">#</option>
+                                <option value="@">@</option>
+                                <option value="X">X</option>
+                                <option value="$">$</option>
+                            </select>
+                        </div>
+                        <div class="block child">
+                            <span>How high?</span>
+                            <!--<input type="text" id="height"/>-->
+                            <input type="range" id="height" name="size" min="1" max="10">
+                            <label id="label_height" for="height">0</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="block child">
+                            <div id="pyramid"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="flex-container">
+            <small>
+                Developed by <a href="https://github.com/dariusstrasel">Darius Strasel</a>
+            </small>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+    <script>
+        updateHeightLabel();
+    </script>
+    </body>
+</html>
