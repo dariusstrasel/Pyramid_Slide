@@ -48,10 +48,21 @@ var eventHandler = symbolSelector_element.addEventListener("change", determineHe
  */
 
 function getSymbol() {
-    var symbol_element = document.getElementById("symbol_selector");
-    var symbolOptions_collection = symbol_element.options;
-    var selected_element = symbolOptions_collection.selectedIndex;
-    return symbolOptions_collection[selected_element].value;
+    if (optionalSymbol()) {
+        return optionalSymbol();
+    }
+    else {
+        var symbol_element = document.getElementById("symbol_selector");
+        var symbolOptions_collection = symbol_element.options;
+        var selected_element = symbolOptions_collection.selectedIndex;
+        return symbolOptions_collection[selected_element].value;
+    }
+}
+
+function optionalSymbol() {
+    var symbol_element_optional = document.getElementById("symbol_selector_optional");
+    var symbol_element_optional_value = symbol_element_optional.value;
+    return symbol_element_optional_value;
 }
 
  function drawPyramid(height, symbol) {
@@ -96,4 +107,6 @@ function getSymbol() {
 var slider_element = document.getElementById("height");
 var slider_eventListener = slider_element.addEventListener("input", determineHeightAndThenDrawPyramid);
 
+var custom_symbol_element = document.getElementById("symbol_selector_optional");
+var custom_symbol_element_eventListener = custom_symbol_element.addEventListener("input", determineHeightAndThenDrawPyramid);
     //TODO: Add function for modifying slider label.
