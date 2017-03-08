@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link type="text/css" rel="stylesheet" href="main.css"/>
+  <link type="text/css" rel="stylesheet" href="../css/main.css"/>
   <title>Pyramid Slide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -16,12 +16,15 @@
                     <div class="row title flex-container">
                         <div class="block child">
                             <span>Brick Symbol:</span>
-                            <select id="symbol_selector"name="symbols">
+                            <select id="symbol_selector" name="symbols">
                                 <option value="#">#</option>
                                 <option value="@">@</option>
                                 <option value="X">X</option>
                                 <option value="$">$</option>
                             </select>
+                            <p><span>Custom Symbol(Override):</span></p>
+                            <input id="symbol_selector_optional" type="text">
+                            <p><span class="error" id="error"></span></p>
                         </div>
                         <div class="block child">
                             <span>How high?</span>
@@ -44,7 +47,7 @@
             </small>
         </footer>
     </div>
-    <script src="main.js"></script>
+    <script src="../js/main.js"></script>
     <script>
         updateHeightLabel();
     </script>

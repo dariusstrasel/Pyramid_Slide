@@ -23,7 +23,12 @@ function determineHeightAndThenDrawPyramid() {
     height = parseInt(heightStr);
     // TODO 2
     // draw the pyramid with the given height
-    drawPyramid(height, getSymbol());
+    if (validSymbol(getSymbol())){
+        drawPyramid(height, getSymbol());
+    }
+    else {
+        console.log("Symbol validation failed.")
+    }
 }
 
 function updateHeightLabel(height) {
@@ -48,10 +53,37 @@ var eventHandler = symbolSelector_element.addEventListener("change", determineHe
  */
 
 function getSymbol() {
-    var symbol_element = document.getElementById("symbol_selector");
-    var symbolOptions_collection = symbol_element.options;
-    var selected_element = symbolOptions_collection.selectedIndex;
-    return symbolOptions_collection[selected_element].value;
+    if (optionalSymbol()) {
+        return optionalSymbol();
+    }
+    else {
+        var symbol_element = document.getElementById("symbol_selector");
+        var symbolOptions_collection = symbol_element.options;
+        var selected_element = symbolOptions_collection.selectedIndex;
+        return symbolOptions_collection[selected_element].value;
+    }
+}
+
+function optionalSymbol() {
+    var symbol_element_optional = document.getElementById("symbol_selector_optional");
+    var symbol_element_optional_value = symbol_element_optional.value;
+    return symbol_element_optional_value;
+}
+
+function validSymbol(input_symbol) {
+    if (input_symbol.length > 1) {
+        console.log("Brick symbol is too large. Use only one character.");
+        var error_element = document.getElementById("error");
+        error_element.innerText = "Brick symbol is too large. Use only one character.";
+        animateError();
+        document.getElementById("symbol_selector_optional").focus();
+        //error_element.classList.remove('error_animation');
+        return false;
+    }
+    if (error_element != undefined) {
+        error_element.innerText = "";
+    }
+    return true;
 }
 
  function drawPyramid(height, symbol) {
@@ -96,4 +128,22 @@ function getSymbol() {
 var slider_element = document.getElementById("height");
 var slider_eventListener = slider_element.addEventListener("input", determineHeightAndThenDrawPyramid);
 
+var custom_symbol_element = document.getElementById("symbol_selector_optional");
+var custom_symbol_element_eventListener = custom_symbol_element.addEventListener("change", determineHeightAndThenDrawPyramid);
     //TODO: Add function for modifying slider label.
+
+function animateError() {
+    console.log("Animation triggered.");
+    var elem = document.getElementById("error");
+    var id = setInterval(frame, 5);
+    var animationPlayed = false;
+    function frame() {
+        if (animationPlayed) {
+            elem.style.color = 'red';
+            clearInterval(id);
+        } else {
+            elem.style.color = 'white';
+            animationPlayed = true;
+        }
+    }
+}
