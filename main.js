@@ -80,7 +80,7 @@ function validSymbol(input_symbol) {
         //error_element.classList.remove('error_animation');
         return false;
     }
-    if (error_element != undefined) {
+    if (error_element.innerText = "Brick symbol is too large. Use only one character.") {
         error_element.innerText = "";
     }
     return true;
